@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="row px-3">
+  <h1>Teams</h1>
+</div>
+
+
+<div class="row">
+    <div class="col-6 order-first">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/groups/fa91d5da-43f0-4a82-8f8b-b17e2b093f99/persons">
+            <i class="c-icon cil-people"></i>
+            <span class="d-none d-md-block ml-2">People</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/groups/fa91d5da-43f0-4a82-8f8b-b17e2b093f99/appointments">
+            <i class="c-icon cil-calendar"></i>
+            <span class="d-none d-md-block ml-2">Appointments</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/groups/fa91d5da-43f0-4a82-8f8b-b17e2b093f99">
+            <i class="c-icon cil-chart"></i>
+            <span class="d-none d-md-block ml-2">Overview</span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link " href="/groups/fa91d5da-43f0-4a82-8f8b-b17e2b093f99/invitations">
+                    <i class="c-icon cil-share-alt mr-1"></i>
+                    <span class="d-none d-lg-block">Share with others</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" aria-expanded="false" class="nav-link"><i class="c-icon cil-cloud-download mr-1"></i>
+                <span class="d-none d-lg-block">Export</span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                <a href="#" class="dropdown-item js-modal-button" data-toggle="modal" data-target="#js-export-csv-modal"><i class="far fa-file dropdown-icon"></i> CSV</a>
+                <a href="#" class="dropdown-item js-modal-button" data-toggle="modal" data-target="#js-export-xls-modal" "=""><i class="far fa-file-excel dropdown-icon"></i> Excel</a>
+                <a href="#" class="dropdown-item js-modal-button" data-toggle="modal" data-target="#js-export-pdf-modal"><i class="far fa-file-pdf dropdown-icon"></i> PDF</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" aria-expanded="false" class="nav-link"><i class="c-icon cil-options-horizontal"></i></a>
+
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" x-placement="bottom-end">
+                <a href="#" class="dropdown-item js-modal-button" data-toggle="modal" data-target="#js-addgroupmodal"><i class="fe fe-copy dropdown-icon outline"></i>copy group</a>
+                <a href="#" class="dropdown-item js-modal-button" data-toggle="modal" data-target="#js-changenamemodal"><i class="fe fe-edit-2 dropdown-icon"></i>edit group</a>
+                <div class="divider"></div>
+                  <a data-confirm="Do you really want to delete the group including all entries?" class="dropdown-item" rel="nofollow" data-method="delete" href="/groups/fa91d5da-43f0-4a82-8f8b-b17e2b093f99"><i class="fe fe-trash-2 dropdown-icon"></i>delete group</a>
+              </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="card">
+    <div class="row">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{{ appointments }}
+
+{% endif %}
+
+{% endblock %} 

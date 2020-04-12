@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="row px-3">
+  <h1>Teams</h1>
+</div>
+
+{% if team_list %}
+<div class="row">
+    {% for team in team_list %}
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-value-lg">{{team.name}}</div>
+                {% for rec in team.recurrences.rrules %}
+                    <div>{{rec.to_text|lower}}</div>
+                {% endfor %}
+                <div class="progress progress-xs my-2">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="text-muted">
+                    <i class="c-icon cil-calendar mr-2"></i>
+                    {{ team.recurrences.count }} appointments
+                  <i class="c-icon cil-people ml-4 mr-2"></i> 19 people
+                </div>
+            </div>
+            <div class="card-footer px-3 py-2"><a class="btn-block text-muted d-flex justify-content-between align-items-center" 
+                href="{% url 'details' team.id %}">
+                <span class="small font-weight-bold">View More</span>
+                <i class="c-icon cil-chevron-right mr-2"></i>
+            </a></div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+            <a class="btn-block text-muted d-flex justify-content-between align-items-center" href="#">
+
+            <div class="card-body text-center mt-4 mb-4">
+              <div class="mt-1"><i class="c-icon cil-plus mr-2"></i> Add Group</div>
+            </div>
+
+            </a></div>
+        </div>
+    </div>
+</div>
+{% else %}
+    <p>No Teams are available.</p>
+{% endif %}
+
+
+{% endif %}
+
+{% endblock %} 

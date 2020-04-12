@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="col-sm-6 col-md-4">
+    <div class="card">
+        <div class="card-header">Card title
+            <div class="card-header-actions"><a class="card-header-action btn-setting" href="#">
+            <svg class="c-icon">
+            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a><a class="card-header-action btn-minimize" href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true">
+            <svg class="c-icon">
+            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-arrow-circle-top"></use>
+            </svg></a><a class="card-header-action btn-close" href="#">
+            <svg class="c-icon">
+            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x-circle"></use>
+            </svg></a></div>
+        </div>
+        <div class="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %} 

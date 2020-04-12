@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                      Overview
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                      Settings
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs nav-overflow header-tabs">
+                      <li class="nav-item">
+                        <a href="{% url 'edit' %}" class="nav-link active">
+                          General
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          Profile
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          Devices
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          Notifications
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Atention!</strong> There are errors on form.     
+                </div>
+            {% endif %}
+
+            <!-- Form -->
+            <form class="ui form" id="register_user" accept-charset="UTF-8" method="post" action="{% url 'edit' %}">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Edit" class="btn btn-primary px-4">
+
+            </form>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+            <div class="card p-4">
+                <div class="card-body col-md-10 offset-md-1">
+                    <h1>Edit</h1>
+                    <p class="text-muted">Sign In to your account</p>
+
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong>Atention!</strong> There are errors on form.     
+                        </div>
+                    {% endif %}
+
+
+                    <form class="ui form" id="register_user" accept-charset="UTF-8" method="post" action="{% url 'edit' %}">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <input type="submit" value="Edit" class="btn btn-primary px-4">
+
+                </form>
+                </div>
+            </div>
+    </div>
+</div> -->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
