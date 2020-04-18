@@ -2,29 +2,44 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-4">
-            <div class="card p-4">
-                <div class="card-body col-md-10 offset-md-1">
-                    <h1>Register</h1>
-                    <p class="text-muted">Sign In to your account</p>
+    <div class="col-12 col-lg-10 col-xl-8">
 
-                    {% if form.errors %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong>Atention!</strong> There are errors on form.     
-                        </div>
-                    {% endif %}
+        <!-- Header -->
+        <div class="header mt-md-5">
+          <div class="header-body">
+            <div class="row align-items-center">
+              <div class="col">
 
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">
+                  Register
+                </h6>
 
-                    <form class="ui form" id="register_user" accept-charset="UTF-8" method="post" action="{% url 'register' %}">
-                    {% csrf_token %}
+                <!-- Title -->
+                <h1 class="header-title">
+                  Sign In to your account
+                </h1>
 
-                    {{ form.as_p }}
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div>
 
-                    <input type="submit" value="Register" class="btn btn-primary px-4">
-
-                </form>
-                </div>
+        {% if form.errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Atention!</strong> There are errors on form.     
             </div>
+        {% endif %}
+
+
+        <form class="ui form" id="register_user" accept-charset="UTF-8" method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+            <input type="submit" value="Register" class="btn btn-primary px-4">
+
+        </form>
     </div>
 </div>
 {% endblock %}
