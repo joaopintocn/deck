@@ -1,58 +1,103 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card-group">
-            <div class="card p-4">
-                <div class="card-body">
-                    <h1>Login</h1>
-                    <p class="text-muted">Sign In to your account</p>
+{% load static %}
 
-                    <form class="ui form" id="new_user" accept-charset="UTF-8" method="post">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                                </svg>
-                            </span>
-                        </div>
-                        <input autofocus="autofocus" class="form-control" type="text" value="" name="username" id="user_email" placeholder="Username">
-                    </div>
-                    <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                                </svg>
-                            </span>
-                        </div>
-                        <input autocomplete="off" class="form-control" type="password" name="password" id="user_password" placeholder="Password">
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <input type="submit" name="commit" value="Log In" class="btn btn-primary px-4" data-disable-with="Log In">
-                        </div>
-                        <div class="col-6 text-right">
-                            <button class="btn btn-link px-0" type="button">Forgot password?</button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                <div class="card-body text-center">
-                    <div>
-                        <h2>Sign up</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
-                    </div>
-                </div>
-            </div>
+{% block bodyattr %}
+<body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary" style="display: block;">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="row align-items-center">
+
+    <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+        <div class="text-center">
+            <img src="{% static 'authenticate/happiness.svg' %}" alt="..." class="img-fluid">
+            <!-- <h2>Sign up</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button> -->
         </div>
     </div>
+
+    <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+          
+          <!-- Heading -->
+          <h1 class="display-4 text-center mb-3">
+            Log in
+          </h1>
+          
+          <!-- Subheading -->
+          <p class="text-muted text-center mb-5">
+            Free access to our dashboard.
+          </p>
+          
+        <!-- Form -->
+        <form class="ui form" id="new_user" accept-charset="UTF-8" method="post">
+        {% csrf_token %}
+
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label>Username</label>
+
+              <!-- Input -->
+              <input autofocus="autofocus" class="form-control" type="text" value="" name="username" id="user_email" placeholder="Username">
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col">
+                      
+                  <!-- Label -->
+                  <label>Password</label>
+
+                </div>
+                <div class="col-auto">
+                  
+                  <!-- Help text -->
+                  <a href="password-reset-illustration.html" class="form-text small text-muted">
+                    Forgot password?
+                  </a>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input autocomplete="off" class="form-control form-control-appended" type="password" name="password" id="user_password" placeholder="Enter your password">
+
+                <!-- Icon -->
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fas fa-eye"></i>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <input type="submit" name="commit" value="Log In" class="btn btn-lg btn-block btn-primary mb-3" data-disable-with="Log In">
+
+            <!-- Link -->
+            <div class="text-center">
+              <small class="text-muted text-center">
+                Don't have an account yet? <a href="{% url 'register' %}">Sign up</a>.
+              </small>
+            </div>
+            
+          </form>
+
+    </div>
+
 </div>
 {% endblock %}
 
