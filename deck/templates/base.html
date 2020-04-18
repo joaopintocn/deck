@@ -468,7 +468,7 @@
 
           <!-- Dropdown -->
           <div class="dropdown">
-
+            {% if user.is_authenticated %}
             <!-- Toggle -->
             <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="./assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
@@ -480,8 +480,15 @@
               <hr class="dropdown-divider">
               <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
             </div>
+            {% else %}
+            <a class="btn btn-secondary" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-primary ml-2" href="{% url 'register' %}">Sign Up</a>
+            {% endif %}
+
+
           </div>
         </div>
+
 
         <!-- Collapse -->
         <div class="collapse navbar-collapse mr-auto order-lg-first" id="navbar">
