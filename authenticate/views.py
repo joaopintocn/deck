@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm
 
-
 def index_user(request):
     return render(request, 'authenticate/index.html', {})
 

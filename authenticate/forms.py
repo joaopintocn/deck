@@ -4,7 +4,13 @@ from django import forms
 
 class SignUpForm(UserCreationForm):
 
+    full_name = forms.CharField(max_length=250,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_number = forms.CharField(max_length=250,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    birth_day = forms.CharField(max_length=250,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=100,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=100,
@@ -21,6 +27,7 @@ class SignUpForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
 
 
 class EditProfileForm(UserChangeForm):

@@ -74,14 +74,19 @@ class Athlete(models.Model):
         (DROPOUT, 'Dropout'),
     ]
 
-    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE,default=None)
+    user=models.OneToOneField(User,on_delete=models.CASCADE, blank=True, null=True)
     athlete_id=models.IntegerField(primary_key=True ,unique=True) #must be alphanumeric
     name=models.CharField(max_length=100)
     category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     team=models.ForeignKey(Team, models.SET_NULL, blank=True, null=True)
     status=models.CharField(max_length=2,choices=STATUS_CHOICES, default=ON_HOLD)
-    joining_date=models.DateField(default=None, blank=True)
+    joining_date=models.DateField(default=None, blank=True, null=True)
     termination_date=models.DateField(default=None,blank=True, null=True)
+
+    def create_athlete(user):
+        athlete = Athlete(user=user)
+        athlete.save()
+    # post_save.connect(create_athlete, sender=User)
 
 
 class Appointment(models.Model):
